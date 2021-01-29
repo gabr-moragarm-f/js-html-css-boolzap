@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boolzapp</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+  <!-- container di pagina -->
+  <div class="wrapper">
+    <!-- vuejs root -->
+    <div id="root">
+      <!-- Contenitore della app vera e propria -->
+      <div class="app-container">
+        <!-- Sidebar per la navigazione -->
+        <div class="sidebar">
+          <!-- topbar con impostazioni varie -->
+          <nav class="padding15">
+            <div class="user-box">
+              <div class="avatar user-image">
+                <img src="img/pp.jpg" alt="user image">
+              </div>
+              <div class="user-name font-size15">
+                Nome Utente
+              </div>
+            </div>
+
+            <ul>
+              <li>
+                <i class="fas fa-circle-notch"></i>
+              </li>
+
+              <li>
+                <i class="fas fa-comment-alt"></i>
+              </li>
+
+              <li>
+                <i class="fas fa-ellipsis-v"></i>
+              </li>
+            </ul>
+          </nav>
+          <!-- /topbar con impostazioni varie -->
+
+          <!-- Box dove appaiono le notifiche di sitema -->
+          <div class="alert-box padding15">
+            <div class="notification-icon avatar">
+              <i class="fas fa-bell-slash"></i>
+            </div>
+
+            <div class="alert-text">
+              <div class="font-size15">
+                Ricevi notifiche di nuovi messaggi
+              </div>
+
+              <span class="font-size13">Attiva notifiche desktop <i class="fas fa-chevron-right"></i> </span>
+            </div>
+          </div>
+          <!-- /Box dove appaiono le notifiche di sitema -->
+
+          <!-- Searchbar -->
+          <div class="searchbar">
+            <div class="input-text">
+              <i class="fas fa-search"></i>
+              <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+            </div>
+          </div>
+          <!-- /Searchbar -->
+
+          <!-- Chat list -->
+          <div class="chat-list">
+            <div v-for="item in contacts" class="chat-box">
+              <div class="avatar">
+                <img :src="item.avatar" :alt="item.name + ' avatar'">
+              </div>
+
+              <div class="chat-details">
+                <div class="interlecutor-name font-size15">
+                  {{item.name}}
+                </div>
+
+                <div class="last-message font-size13">
+                  {{item.messages[item.messages.length - 1].text}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Chat list -->
+        </div>
+        <!-- /Sidebar per la navigazione -->
+
+        <main>
+          <div class="dialogue-box">
+
+          </div>
+
+          <div class="bottom-box">
+
+          </div>
+        </main>
+      </div>
+      <!-- /Contenitore della app vera e propria -->
+    </div>
+    <!-- /vuejs root -->
+  </div>
+  <!-- /container di pagina -->
+  <script src="js/script.js" charset="utf-8"></script>
+</body>
+</html>
