@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boolzapp</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -94,12 +94,72 @@
         <!-- /Sidebar per la navigazione -->
 
         <main>
-          <div class="dialogue-box">
+          <!-- header con le informazioni dell'interlecutore -->
+          <div class="main-interlecutor-details padding15">
+            <div class="interlecutor-box">
+              <div class="avatar user-image">
+                <img src="img/pp.jpg" alt="user image">
+              </div>
 
+              <div>
+                <div class="font-size15">
+                  Nome Utente
+                </div>
+
+                <div class="last-access font-size13">
+                  Ultimo accesso
+                </div>
+              </div>
+            </div>
+
+            <ul>
+              <li>
+                <i class="fas fa-search"></i>
+              </li>
+
+              <li>
+                <i class="fas fa-ellipsis-v"></i>
+              </li>
+            </ul>
           </div>
+          <!-- /header con le informazioni dell'interlecutore -->
+
+          <!-- Box con effettiva chat baloon -->
+          <div class="dialogue-box">
+            <div class="text-line">
+              <div class="chat-baloon sent">
+                prova
+              </div>
+            </div>
+
+            <div class="text-line">
+              <div class="chat-baloon received">
+                prova
+              </div>
+            </div>
+          </div>
+          <!-- /Box con effettiva chat baloon -->
 
           <div class="bottom-box">
+            <ul>
+              <li>
+                <i class="far fa-smile"></i>
+              </li>
 
+              <li>
+                <i class="fas fa-paperclip"></i>
+              </li>
+            </ul>
+
+            <div class="input-text">
+              <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+            </div>
+
+            <ul>
+              <li>
+                <i class="fas fa-microphone"></i>
+              </li>
+            </ul>
           </div>
         </main>
       </div>
