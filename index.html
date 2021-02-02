@@ -73,7 +73,7 @@
 
           <!-- Chat list -->
           <div class="chat-list">
-            <div v-for="item in contacts" class="chat-box">
+            <div @click="indexSelectedContact = index" v-for="(item, index) in contacts" :class="'chat-box' + isActive(index)">
               <div class="avatar">
                 <img :src="item.avatar" :alt="item.name + ' avatar'">
               </div>
@@ -98,12 +98,12 @@
           <div class="main-interlecutor-details padding15">
             <div class="interlecutor-box">
               <div class="avatar user-image">
-                <img src="img/pp.jpg" alt="user image">
+                <img :src="contacts[indexSelectedContact].avatar" alt="contacts[indexSelectedContact].name + ' avatar'">
               </div>
 
               <div>
                 <div class="font-size15">
-                  Nome Utente
+                  {{contacts[indexSelectedContact].name}}
                 </div>
 
                 <div class="last-access font-size13">
@@ -126,15 +126,13 @@
 
           <!-- Box con effettiva chat baloon -->
           <div class="dialogue-box">
-            <div class="text-line">
-              <div class="chat-baloon sent">
-                prova
-              </div>
-            </div>
+            <div  v-for="item in contacts[indexSelectedContact].messages" class="text-line">
+              <div :class="'chat-baloon ' + item.status">
+                <div class="chat-text">
+                  {{item.text}}
+                </div>
 
-            <div class="text-line">
-              <div class="chat-baloon received">
-                prova
+                <div class="message-date">{{item.date}}</div>
               </div>
             </div>
           </div>
@@ -152,7 +150,10 @@
             </ul>
 
             <div class="input-text">
-              <input type="text" name="" value="" placeholder="Scrivi un messaggio">
+              <input @keyup.enter="sendMessage()" type="text" name="" v-model="inputMessage" placeholder="Scrivi un messaggio">
+              <!-- <div class="message-editor" @keyup.enter="sendMessage()" contenteditable="true" placeholder="Scrivi un messaggio">
+                {{inputMessage}}
+              </div> -->
             </div>
 
             <ul>

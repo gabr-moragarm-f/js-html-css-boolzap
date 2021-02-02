@@ -85,11 +85,41 @@ var app = new Vue({
           }
         ],
       },
-    ]
-
+    ],
+    indexSelectedContact: '0',
+    inputMessage: '',
+    localDate: new Date()
   },
   methods:{
+    isActive: function(i) {
+      if (i === this.indexSelectedContact) {
+        return ' active'
+      }else{
+        return ''
+      }
+    },
+    sendMessage: function() {
+      if (this.inputMessage !== '') {
+        this.contacts[this.indexSelectedContact].messages.push({
+          date: (this.localDate.toLocaleDateString() + ' ' + this.localDate.toLocaleTimeString()),
+          text: this.inputMessage,
+          status: 'sent'
+        });
 
+        this.inputMessage = ''
+
+        console.log(this.contacts[this.indexSelectedContact].messages);
+
+        setTimeout(this.answerRammus, 1000);        
+      }
+    },
+    answerRammus: function() {
+      this.contacts[this.indexSelectedContact].messages.push({
+        date: (this.localDate.toLocaleDateString() + ' ' + this.localDate.toLocaleTimeString()),
+        text: 'ok',
+        status: 'received'
+      });
+    }
   }
 });
 

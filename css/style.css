@@ -13,7 +13,7 @@ li{
   list-style: none;
 }
 
-input[type="text"]{
+input[type="text"], .message-editor{
   outline: none;
   border: none;
 }
@@ -191,6 +191,10 @@ i{
   background-color: #f5f5f5;
 }
 
+.chat-box.active{
+  background-color: #f5f5f5;
+}
+
 .chat-details{
   width: calc(100% - 65px);
   margin-left: 15px;
@@ -203,11 +207,6 @@ i{
 
 main{
   width: 70%;
-  border-left: 1px solid #;
-}
-
-.main-interlecutor-details{
-  border-left: 1px solid #ebebeb;
 }
 
 .main-interlecutor-details > ul{
@@ -235,17 +234,37 @@ main{
   box-shadow: 0 1px .5px #aaa;
 }
 
+.chat-baloon:after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
 .chat-baloon.sent{
   background-color: #DCF8C6;
   align-self: flex-end;
 }
+
 .chat-baloon.received{
   background-color: #fff;
   align-self: flex-start;
 }
 
-.bottom-box{
-  height: 60px;
+.chat-text{
+  word-wrap: break-word;
+}
+
+.chat-text::after{
+  content: '';
+  display: inline-block;
+  width: 100px;
+}
+
+.message-date{
+  font-size: 10px;
+  color: #999;
+  float: right;
+  margin: -10px 0 -5px 4px;
 }
 
 .bottom-box > ul > li > i{
@@ -258,14 +277,15 @@ main{
 
 .bottom-box > .input-text{
  width: 100%;
- height: 40px;
+ min-height: 40px;
  padding: 10px 15px;
 }
 
-.bottom-box > .input-text > input[type="text"]{
+.bottom-box > .input-text > input[type="text"],
+.bottom-box > .input-text > .message-editor{
   width: 100%;
   font-size: 15px;
-  height: 20px;
+  min-height: 20px;
 }
 
 .bottom-box > ul:last-child{
