@@ -88,9 +88,30 @@ var app = new Vue({
     ],
     indexSelectedContact: '0',
     inputMessage: '',
-    localDate: new Date()
+    inputSearch: ''
   },
   methods:{
+    visibleCheck: function() {
+      if (this.inputSearch === '') {
+        this.contacts = this.contacts.map((element, index, array) => {
+          element.visible = true;
+
+          return element;
+        });
+      }else {
+        this.contacts = this.contacts.map((element, index, array) => {
+          if (this.contacts[index].name.toLowerCase().startsWith(this.inputSearch.toLowerCase())) {
+            element.visible = true;
+
+            return element;
+          }
+          element.visible = false;
+
+          return element;
+        });
+
+      }
+    },
     isActive: function(i) {
       if (i === this.indexSelectedContact) {
         return ' active'
@@ -101,7 +122,7 @@ var app = new Vue({
     sendMessage: function() {
       if (this.inputMessage !== '') {
         this.contacts[this.indexSelectedContact].messages.push({
-          date: (this.localDate.toLocaleDateString() + ' ' + this.localDate.toLocaleTimeString()),
+          date: (new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()),
           text: this.inputMessage,
           status: 'sent'
         });
@@ -110,12 +131,12 @@ var app = new Vue({
 
         console.log(this.contacts[this.indexSelectedContact].messages);
 
-        setTimeout(this.answerRammus, 1000);        
+        setTimeout(this.answerRammus, 1000);
       }
     },
     answerRammus: function() {
       this.contacts[this.indexSelectedContact].messages.push({
-        date: (this.localDate.toLocaleDateString() + ' ' + this.localDate.toLocaleTimeString()),
+        date: (new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()),
         text: 'ok',
         status: 'received'
       });

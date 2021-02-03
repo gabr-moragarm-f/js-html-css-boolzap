@@ -65,15 +65,18 @@
           <!-- Searchbar -->
           <div class="searchbar">
             <div class="input-text">
-              <i class="fas fa-search"></i>
-              <input type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+              <label for="search-input">
+                <i class="fas fa-search"></i>
+              </label>
+
+              <input type="text" name="search-input" @keyup="visibleCheck" v-model="inputSearch" placeholder="Cerca o inizia una nuova chat">
             </div>
           </div>
           <!-- /Searchbar -->
 
           <!-- Chat list -->
           <div class="chat-list">
-            <div @click="indexSelectedContact = index" v-for="(item, index) in contacts" :class="'chat-box' + isActive(index)">
+            <div @click="indexSelectedContact = index" v-for="(item, index) in contacts" v-if="item.visible" :class="'chat-box' + isActive(index)">
               <div class="avatar">
                 <img :src="item.avatar" :alt="item.name + ' avatar'">
               </div>
@@ -151,6 +154,7 @@
 
             <div class="input-text">
               <input @keyup.enter="sendMessage()" type="text" name="" v-model="inputMessage" placeholder="Scrivi un messaggio">
+
               <!-- <div class="message-editor" @keyup.enter="sendMessage()" contenteditable="true" placeholder="Scrivi un messaggio">
                 {{inputMessage}}
               </div> -->
