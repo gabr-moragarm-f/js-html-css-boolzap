@@ -6,7 +6,6 @@
 
 body{
   font-family: 'Lato', sans-serif;
-  /* overflow-y: hidden; */
 }
 
 li{
@@ -51,6 +50,10 @@ i{
 .font-size13{
   font-size: 13px;
 }
+
+.hover-on-white:hover{
+  background-color: #f5f5f5;
+}
 /* /utilities */
 
 .wrapper{
@@ -66,7 +69,6 @@ i{
   height: 127px;
   background-color: #009688;
   position: fixed;
-  /* z-index: */
 }
 
 .app-container{
@@ -179,20 +181,18 @@ i{
 
 .chat-box{
   display: flex;
+  height: 70px;
   align-items: center;
   padding: 10px 15px;
+  cursor: pointer;
 }
 
 .chat-box:not(:first-child){
   border-top: 1px solid #f2f2f2;
 }
 
-.chat-box:hover{
-  background-color: #f5f5f5;
-}
-
 .chat-box.active{
-  background-color: #f5f5f5;
+  background-color: #EBEBEB;
 }
 
 .chat-details{
@@ -200,9 +200,26 @@ i{
   margin-left: 15px;
 }
 
-.last-message, .last-access{
+.upper-line-details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upper-line-details > *{
+  display: inline-block;
+}
+
+.last-message, .last-access, .last-message-time{
   color: #666;
-  display: none;      /* GUARDA CHE QUI è NASCOSTO EH */
+  height: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.last-message-time{
+  font-size: 12px;
 }
 
 main{
@@ -232,6 +249,7 @@ main{
   border-radius: 7.5px;
   padding: 6px 7px 8px 9px;
   box-shadow: 0 1px .5px #aaa;
+  position: relative;
 }
 
 .chat-baloon:after{
@@ -258,6 +276,41 @@ main{
   content: '';
   display: inline-block;
   width: 100px;
+}
+
+.baloon-options-btn{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+  cursor: pointer;
+}
+
+.chat-baloon:hover .baloon-options-btn{
+  display: block;
+}
+
+.chat-baloon.sent > .baloon-options-btn{
+  background-color: #DCF8C6;
+}
+
+.chat-baloon.received > .baloon-options-btn{
+  background-color: #fff;
+}
+
+.aloon-options-btn:focus > .baloon-options{
+  display: block;
+}
+
+.baloon-options{
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  padding: 5px 0;
+}
+
+.baloon-options > ul > li{
+  padding: 10px 15px;
 }
 
 .message-date{

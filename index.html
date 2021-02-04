@@ -25,6 +25,7 @@
               <div class="avatar user-image">
                 <img src="img/pp.jpg" alt="user image">
               </div>
+
               <div class="user-name font-size15">
                 Nome Utente
               </div>
@@ -76,14 +77,20 @@
 
           <!-- Chat list -->
           <div class="chat-list">
-            <div @click="indexSelectedContact = index" v-for="(item, index) in contacts" v-if="item.visible" :class="'chat-box' + isActive(index)">
+            <div @click="indexSelectedContact = index" v-for="(item, index) in contacts" v-if="item.visible" :class="'chat-box hover-on-white' + isActiveIndex(index)">
               <div class="avatar">
                 <img :src="item.avatar" :alt="item.name + ' avatar'">
               </div>
 
               <div class="chat-details">
-                <div class="interlecutor-name font-size15">
-                  {{item.name}}
+                <div class="upper-line-details">
+                  <div class="interlecutor-name font-size15">
+                    {{item.name}}
+                  </div>
+
+                  <div class="last-message-time">
+                    {{lastMessageTime(item.messages[item.messages.length - 1].date)}}
+                  </div>
                 </div>
 
                 <div class="last-message font-size13">
@@ -135,12 +142,25 @@
                   {{item.text}}
                 </div>
 
-                <div class="message-date">{{item.date}}</div>
+                <div class="baloon-options-btn">
+                  <i @click="isActiveFocus" class="fas fa-angle-down"></i>
+
+                  <div class="baloon-options">
+                    <ul>
+                      <li class="hover-on-white font-size13">Info Messaggio</li>
+
+                      <li class="hover-on-white font-size13">Cancella Messaggio</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="message-date">{{takeHour(item.date)}}</div>
               </div>
             </div>
           </div>
           <!-- /Box con effettiva chat baloon -->
 
+          <!-- Box input messaggi -->
           <div class="bottom-box">
             <ul>
               <li>
@@ -166,6 +186,7 @@
               </li>
             </ul>
           </div>
+          <!-- /Box input messaggi -->
         </main>
       </div>
       <!-- /Contenitore della app vera e propria -->
